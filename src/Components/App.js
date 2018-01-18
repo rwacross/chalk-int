@@ -12,37 +12,41 @@ const styles = {
     flex: 1,
     display: 'flex',
     flexDirection: 'row',
+    overflow: 'hidden',
     backgroundColor: '#9fbfdf'
   }),
 
   entries: css({
     width: '30%',
-    height: '100%',
+    height: '1000px',
     flex: 1,
     display: 'flex',
     flexDirection: 'column',
+    overflow: 'hidden',
     backgroundColor: '#ecf2f9'
   }),
 
   details: css({
-    width: '70%'
+    width: '70%',
   })
 }
 
 export default class App extends Component {
 
-    componentDidMount() {}
-
     render() {
         const { teachers } = this.props
         const entriesToRender = []
-        //Test with only 10 entries
-        //console.log('First 10 entries', teachers.slice(0,10))
+
         for (let i = 0; i < teachers.length; i+=1) {
             entriesToRender.push(teachers[i].id)
         }
-        // console.log('entries', entriesToRender)
 
+        const sidebarStyles = {
+            root: {
+                width: '30%',
+                height: '100%'
+            }
+        }
         
         return (
 
@@ -51,7 +55,7 @@ export default class App extends Component {
                 <div {...styles.container}>
 
                     <div {...styles.entries}>
-                        {/* {<Sidebar style={{ width: "30%" }}>} */}
+                    <Sidebar styles={sidebarStyles}>
                         {entriesToRender.map(index =>
                             <Link key={index} to={`/teacher/${teachers[index-1].id}`} style={{ color: '#000', textDecoration: 'none' }}>
                                 <div>
@@ -59,7 +63,7 @@ export default class App extends Component {
                                 </div>
                             </Link>
                         )}
-                       {/* { </Sidebar>} */}
+                    </Sidebar>
                     </div>
 
                     <div {...styles.details}>

@@ -1,6 +1,9 @@
 import React from 'react'
 import { css } from 'glamor'
 
+import fontLatoBold from '../fonts/Lato-Bold.woff2'
+import fontLatoRegular from '../fonts/Lato-Regular.woff2'
+
 const styles = {
   container: css({
     flexGrow: 1,
@@ -13,33 +16,56 @@ const styles = {
   idStyle: css({
     position: 'absolute',
     top: '45px',
-    left: '31%'
+    left: '33%',
+    fontFamily: css.fontFace({ fontFamily: 'Lato-Bold', src: `url(${fontLatoBold}) format('woff2')` }),
+    color: '#333333',
+    fontSize: '40px',
+    letterSpacing: '10px'
   }),
 
   teacherInfo: css({
     flex: 1,
     display: 'flex',
     flexDirection: 'row',
-    padding: '20px'
+    padding: '20px',
+    height: '60%'
   }),
 
   infoStyle: css({
     flex: 1,
     display: 'flex',
     flexDirection: 'column',
-    padding: '20px'
+    padding: '40px',
+    fontFamily: css.fontFace({ fontFamily: 'Lato-Bold', src: `url(${fontLatoBold}) format('woff2')` }),
+    color: '#333333',
+    fontSize: '35px',
+    letterSpacing: '7px'
+  }),
+
+  cheadStyle: css({
+    textAlign: 'left',
+    paddingLeft: '40px',
+    paddingTop: '40px',
+    fontFamily: css.fontFace({ fontFamily: 'Lato-Bold', src: `url(${fontLatoBold}) format('woff2')` }),
+    color: '#333333',
+    fontSize: '35px',
+    letterSpacing: '7px'
   }),
 
   classStyle: css({
     flex: 1,
     display: 'flex',
-    flexDirection: 'row',
-    padding: '20px'
+    flexDirection: 'column',
+    padding: '20px',
+    fontFamily: css.fontFace({ fontFamily: 'Lato-Regular', src: `url(${fontLatoRegular}) format('woff2')` }),
+    color: '#333333',
+    fontSize: '25px',
+    letterSpacing: '7px'
   }),
 
   avatarStyle: css({
-    width: '20%',
-    height: '30%'
+    width: '30%',
+    height: '50%'
   })
 }
 
@@ -47,9 +73,9 @@ export default function DetailEntry({ teacher }) {
   //console.log('teacher entry', teacher)
   const classes = []
   if (teacher.classes) {
-  for (let j=0; j<teacher.classes.length; j+=1){
-    classes.push(teacher.classes[j].class)
-  }
+    for (let j=0; j<teacher.classes.length; j+=1){
+        classes.push(teacher.classes[j].class)
+    }
   } else {
     classes.push("No Classes Entered")
   }
@@ -57,11 +83,11 @@ export default function DetailEntry({ teacher }) {
   let element = null
   if (teacher.avatar) {
     element = (
-        <img src={teacher.avatar} height="50%" width="50%" alt={teacher.first_name}/>
+        <img src={teacher.avatar} height="50%" width="100%" alt={teacher.first_name}/>
     )
   } else {
     element = (
-        <img src="https://www.freewebmentor.com/default-avatar.png" height="50%" width="50%" alt={teacher.first_name}/>
+        <img src="https://www.freewebmentor.com/default-avatar.png" height="50%" width="100%" alt={teacher.first_name}/>
     )
   }
 
@@ -75,15 +101,15 @@ export default function DetailEntry({ teacher }) {
           { element }
         </div>
         <div {...styles.infoStyle}>
-        <div>
-          { `Name: ${teacher.first_name} ${teacher.last_name}` }
-        </div>
-        <div>
-          { `Email: ${teacher.email}` }
-        </div>
+            <div style={{paddingTop: '3%'}}>
+            { `Name: ${teacher.first_name} ${teacher.last_name}` }
+            </div>
+            <div style={{paddingTop: '10%'}}>
+            { `Email: ${teacher.email}` }
+            </div>
         </div>
       </div>
-      <div>
+      <div {...styles.cheadStyle}>
         Classes Assigned
         <div {...styles.classStyle}>
             { classes }

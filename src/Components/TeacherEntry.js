@@ -1,5 +1,7 @@
 import React from 'react'
-import { css, merge } from 'glamor'
+import { css } from 'glamor'
+
+import fontLatoBold from '../fonts/Lato-Bold.woff2'
 
 const styles = {
   container: css({
@@ -17,6 +19,13 @@ const styles = {
   avatarStyle: css({
     width: '10%',
     height: '10%'
+  }),
+
+  nameStyle: css({
+    fontFamily: css.fontFace({ fontFamily: 'Lato-Bold', src: `url(${fontLatoBold}) format('woff2')` }),
+    color: '#333333',
+    fontSize: '20px',
+    letterSpacing: '6px'
   })
 }
 
@@ -35,11 +44,7 @@ export default function TeacherEntry({ teacher }) {
   }
 
   let bgcol = null
-  if (teacher.id % 2 === 0) {
-    bgcol = {backgroundColor: '#ecf2f9'}
-  } else {
-    bgcol = {backgroundColor: '#fff'}
-  }
+  teacher.id % 2 === 0 ? bgcol = {backgroundColor: '#ecf2f9'} : bgcol = {backgroundColor: '#fff'}
 
   return (
     <div {...styles.container} style={ bgcol }>
@@ -47,7 +52,7 @@ export default function TeacherEntry({ teacher }) {
         <div {...styles.avatarStyle}>
           { element }
         </div>
-        <div>
+        <div {...styles.nameStyle}>
          { `${ teacher.first_name } ${teacher.last_name}` }           
         </div>
       </div>
