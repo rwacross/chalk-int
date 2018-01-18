@@ -33,7 +33,7 @@ const styles = {
     paddingLeft: '60px',
     fontFamily: css.fontFace({ fontFamily: 'Lato-Bold', src: `url(${fontLatoBold}) format('woff2')` }),
     color: '#333333',
-    fontSize: '50px',
+    fontSize: '40px',
     letterSpacing: '6px'
   }),
 

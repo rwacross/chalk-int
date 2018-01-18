@@ -38,18 +38,18 @@ const styles = {
     padding: '40px',
     fontFamily: css.fontFace({ fontFamily: 'Lato-Bold', src: `url(${fontLatoBold}) format('woff2')` }),
     color: '#333333',
-    fontSize: '35px',
-    letterSpacing: '7px'
+    fontSize: '20px',
+    letterSpacing: '5px'
   }),
 
   cheadStyle: css({
     textAlign: 'left',
-    paddingLeft: '40px',
+    paddingLeft: '30px',
     paddingTop: '40px',
     fontFamily: css.fontFace({ fontFamily: 'Lato-Bold', src: `url(${fontLatoBold}) format('woff2')` }),
     color: '#333333',
-    fontSize: '35px',
-    letterSpacing: '7px'
+    fontSize: '20px',
+    letterSpacing: '5px'
   }),
 
   classStyle: css({
@@ -59,8 +59,8 @@ const styles = {
     paddingTop: '20px',
     fontFamily: css.fontFace({ fontFamily: 'Lato-Regular', src: `url(${fontLatoRegular}) format('woff2')` }),
     color: '#333333',
-    fontSize: '25px',
-    letterSpacing: '7px'
+    fontSize: '20px',
+    letterSpacing: '5px'
   }),
 
   avatarStyle: css({
