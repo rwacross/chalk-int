@@ -48,28 +48,40 @@ const styles = {
     display: 'flex',
     flexDirection: 'row',
     padding: '20px'
+  }),
+
+  avatarStyle: css({
+    width: '10%',
+    height: '10%'
   })
 }
 
 export default function TeacherEntry({ teacher }) {
   //console.log('teacher entry', teacher)
+
+  let element = null
+  if (teacher.avatar) {
+    element = (
+      <div {...styles.avatarStyle}>
+        <img src={teacher.avatar} height="50%" width="50%"/>
+      </div>
+    )
+  } else {
+    element = (
+      <div {...styles.avatarStyle}>
+        <img src="https://www.freewebmentor.com/default-avatar.png" height="50%" width="50%"/>
+      </div>
+    )
+  }
   return (
     <div {...styles.container}>
       <div {...styles.teacherInfo}>
-        <div>
-          { teacher.id }
-        </div>
+        { element }
         <div>
           { teacher.first_name }
         </div>
         <div>
           { teacher.last_name }
-        </div>
-        <div>
-          { teacher.email }
-        </div>
-        <div>
-          { teacher.avatar }
         </div>
       </div>
     </div>
