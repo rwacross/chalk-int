@@ -62,26 +62,22 @@ export default function TeacherEntry({ teacher }) {
   let element = null
   if (teacher.avatar) {
     element = (
-      <div {...styles.avatarStyle}>
-        <img src={teacher.avatar} height="50%" width="50%"/>
-      </div>
+        <img src={teacher.avatar} height="50%" width="50%" alt={teacher.first_name}/>
     )
   } else {
     element = (
-      <div {...styles.avatarStyle}>
-        <img src="https://www.freewebmentor.com/default-avatar.png" height="50%" width="50%"/>
-      </div>
+        <img src="https://www.freewebmentor.com/default-avatar.png" height="50%" width="50%" alt={teacher.first_name}/>
     )
   }
+
   return (
     <div {...styles.container}>
       <div {...styles.teacherInfo}>
-        { element }
-        <div>
-          { teacher.first_name }
+        <div {...styles.avatarStyle}>
+          { element }
         </div>
         <div>
-          { teacher.last_name }
+         { `${ teacher.first_name } ${teacher.last_name}` }           
         </div>
       </div>
     </div>
