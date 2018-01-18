@@ -42,6 +42,14 @@ const styles = {
   })
 }
 
+// Sidebar styles must be set in this way for library
+const sidebarStyles = {
+    root: {
+        width: '30%',
+        height: '100%'
+    }
+}
+
 export default class App extends Component {
 
     render() {
@@ -51,22 +59,15 @@ export default class App extends Component {
         for (let i = 0; i < teachers.length; i+=1) {
             entriesToRender.push(teachers[i].id)
         }
-
-        const sidebarStyles = {
-            root: {
-                width: '30%',
-                height: '100%'
-            }
-        }
         
+        const sidebarContent = 'Sidebar Content' // Required by plugin, or throws an error...
+
         return (
-
-
             <Router>
                 <div {...styles.container}>
 
                     <div {...styles.entries}>
-                    <Sidebar styles={sidebarStyles}>
+                    <Sidebar sidebar={sidebarContent} styles={sidebarStyles}>
                         {entriesToRender.map(index =>
                             <Link key={index} to={`/teacher/${teachers[index-1].id}`} style={{ color: '#000', textDecoration: 'none' }}>
                                 <div>

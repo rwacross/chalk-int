@@ -56,7 +56,7 @@ const styles = {
     flex: 1,
     display: 'flex',
     flexDirection: 'column',
-    padding: '20px',
+    paddingTop: '20px',
     fontFamily: css.fontFace({ fontFamily: 'Lato-Regular', src: `url(${fontLatoRegular}) format('woff2')` }),
     color: '#333333',
     fontSize: '25px',
@@ -112,7 +112,11 @@ export default function DetailEntry({ teacher }) {
       <div {...styles.cheadStyle}>
         Classes Assigned
         <div {...styles.classStyle}>
-            { classes }
+            {classes.map(className =>
+                <div style={{paddingTop: '20px'}}>
+                 { className }
+                </div>
+            )}
         </div>
       </div>
 

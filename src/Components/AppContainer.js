@@ -38,35 +38,17 @@ export default class AppContainer extends PureComponent {
     clearInterval(this.systemTimeInterval)
   }
 
-  getDataFromApi() { // eslint-disable-line class-methods-use-this
+  getData() {
     const url = API_DOMAIN
 
-    return axios.get(url)
+    axios.get(url)
       .then((response) => {
         if (!isPerson(response.data)) {
-          console.log(response.data) // eslint-disable-line no-console
+          console.log('Api Response', response.data) // eslint-disable-line no-console
           throw new Error('Invalid Data - Entries in incorrect format')
         }
-        return response.data
-      })
-  }
-
-  getData() {
-    this.getDataFromApi()
-      .then((response) => {
-        console.log('Server data: ', response)
-        const result = {
-          apiData: response,
-          lastFetchTime: +(new Date())
-        }
-
-        this.setState(result)
-      })
-      .catch((err) => {
-        if (err.code === 400) {
-          this.setState({ error: 'Problem getting data from API' })
-        }
-        console.error(err) // eslint-disable-line no-console
+        console.log('Api Response', response.data)
+        this.setState({apiData: response.data})
       })
   }
 
