@@ -1,37 +1,23 @@
 import React, { Component } from 'react'
 import { css } from 'glamor'
 import { BrowserRouter as Router, Link, Route } from 'react-router-dom'
+import Sidebar from 'react-sidebar'
 
 import TeacherEntry from './TeacherEntry'
 import DetailEntry from './DetailEntry'
-
-//import theme from '../theme'
-
-// css.global('html, body, #root', {
-//   height: '100%'
-// })
-
-// css.global('body', {
-//   margin: 0,
-//   // backgroundColor: theme.base.bgColor
-// })
-
-// css.global('html', {
-// //   fontSize: `${theme.base.rootFontSize}px`,
-// //   fontFamily: theme.base.fontRegular,
-// //   color: theme.base.textColor
-// })
 
 const styles = {
   container: css({
     height: '100%',
     flex: 1,
     display: 'flex',
-    flexDirection: 'row'
+    flexDirection: 'row',
+    backgroundColor: '#9fbfdf'
   }),
 
   entries: css({
     width: '30%',
+    height: '100%',
     flex: 1,
     display: 'flex',
     flexDirection: 'column',
@@ -56,10 +42,16 @@ export default class App extends Component {
             entriesToRender.push(teachers[i].id)
         }
         // console.log('entries', entriesToRender)
+
+        
         return (
+
+
             <Router>
                 <div {...styles.container}>
+
                     <div {...styles.entries}>
+                        {/* {<Sidebar style={{ width: "30%" }}>} */}
                         {entriesToRender.map(index =>
                             <Link key={index} to={`/teacher/${teachers[index-1].id}`} style={{ color: '#000', textDecoration: 'none' }}>
                                 <div>
@@ -67,8 +59,9 @@ export default class App extends Component {
                                 </div>
                             </Link>
                         )}
-                        
+                       {/* { </Sidebar>} */}
                     </div>
+
                     <div {...styles.details}>
                         <Route exact={true} path="/" render={() => (
                             <h1>Welcome. Click on a Teacher for full details</h1>
@@ -82,17 +75,3 @@ export default class App extends Component {
         )
     }
 }
-
-// const Detail = ({ teacher }) => {
-//   console.log('teacher entry', teacher)
-//   const classes = []
-//   for (let j=0; j<teacher.classes.length; j+=1){
-//     classes.push(teacher.classes[j].class)
-//   }
-
-//   return (
-//     <div {...styles.container}>
-//         Hello. I'm a teacher
-//     </div>
-//   )
-// }

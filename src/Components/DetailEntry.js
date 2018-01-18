@@ -3,7 +3,7 @@ import { css } from 'glamor'
 
 const styles = {
   container: css({
-    flexGrow: 0,
+    flexGrow: 1,
     flexShrink: 0,
     display: 'flex',
     flexDirection: 'column',
