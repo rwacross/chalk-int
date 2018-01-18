@@ -6,6 +6,8 @@ import Sidebar from 'react-sidebar'
 import TeacherEntry from './TeacherEntry'
 import DetailEntry from './DetailEntry'
 
+import fontLatoBold from '../fonts/Lato-Bold.woff2'
+
 const styles = {
   container: css({
     height: '100%',
@@ -24,6 +26,15 @@ const styles = {
     flexDirection: 'column',
     overflow: 'hidden',
     backgroundColor: '#ecf2f9'
+  }),
+
+  welcomeStyle: css({
+    paddingTop: '40px',
+    paddingLeft: '60px',
+    fontFamily: css.fontFace({ fontFamily: 'Lato-Bold', src: `url(${fontLatoBold}) format('woff2')` }),
+    color: '#333333',
+    fontSize: '50px',
+    letterSpacing: '6px'
   }),
 
   details: css({
@@ -68,7 +79,11 @@ export default class App extends Component {
 
                     <div {...styles.details}>
                         <Route exact={true} path="/" render={() => (
-                            <h1>Welcome. Click on a Teacher for full details</h1>
+                            <div {...styles.welcomeStyle}>
+                                Welcome to the Demo App
+                                <br/>
+                                Click a Teacher for more detail
+                            </div>
                         )}/>
                         <Route path="/teacher/:id" render={({ match }) => (
                             <DetailEntry teacher={teachers[match.params.id -1]} />
