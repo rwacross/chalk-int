@@ -1,3 +1,5 @@
+This project was created in a single afternoon for Chalk. It is relatively simple, but serves as a demonstration of how to make an app quickly and functionally, with CSS to be optimized later.
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
